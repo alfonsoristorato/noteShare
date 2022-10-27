@@ -1,0 +1,8 @@
+auth0:
+  audience: noteShareApi
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://dev-b3gboy55.us.auth0.com/
