@@ -1,5 +1,5 @@
 {
     "domain": "dev-b3gboy55.us.auth0.com",
-    "clientId": "jQIUGEvsMUg9GaF4YJTEOkbKHPAoOjTX"
-
-  }    
+    "clientId": "jQIUGEvsMUg9GaF4YJTEOkbKHPAoOjTX",
+    "audience": "noteShareApi"
+}

@@ -5,10 +5,11 @@ import { useAuth0 } from "@auth0/auth0-react";
 import "./App.css";
 import Loading from "./components/Loading";
 import Notes from "./pages/Notes";
+import AddNotes from "./pages/AddNotes";
 
 const App = () => {
   const { getAccessTokenSilently, getAccessTokenWithPopup } = useAuth0();
-  const { isLoading, error, user } = useAuth0();
+  const { isLoading, error, user, isAuthenticated } = useAuth0();
   if (error) {
     return <div>Oops... {error.message}</div>;
   }
@@ -33,13 +34,28 @@ const App = () => {
   if (isLoading) {
     return <Loading />;
   }
+  if (error) {
+    return <div>Oops... {error.message}</div>;
+  }
+
   return (
     <Router>
       <div>
         <NavBar />
-        <Routes>
-          <Route path="/" element={<Notes />}></Route>
-        </Routes>
+        {isAuthenticated ? (
+          <Routes>
+            <Route
+              path="/"
+              element={<Notes tokenGenerator={genericToken} user={user} />}
+            ></Route>
+            <Route
+              path="/addNote"
+              element={<AddNotes tokenGenerator={genericToken} user={user} />}
+            ></Route>
+          </Routes>
+        ) : (
+          <div>Not authenticated </div>
+        )}
       </div>
     </Router>
   );
