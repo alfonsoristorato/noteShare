@@ -12,8 +12,11 @@ public class NoteService {
     @Autowired
     private NoteRepository noteRepository;
 
-    public List<Note> getYourNotes(String owner){
-        return noteRepository.findByOwner(owner);
+    public List<Note> getYourNotes(String ownerEmail){
+        return noteRepository.findByOwner(ownerEmail);
+    }
 
+    public void saveNote (Note note){
+        noteRepository.insert(note);
     }
 }
