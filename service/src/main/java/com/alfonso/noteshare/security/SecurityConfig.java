@@ -40,7 +40,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests()
 
-                .mvcMatchers("/api").authenticated()
+                .mvcMatchers("/api/*").authenticated()
 
                 .and().cors()
                 .and().oauth2ResourceServer().jwt();
